@@ -1,0 +1,42 @@
+{
+  "name": "infinity-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Infinity Tools - One Platform. Infinite Tools.",
+  "author": "Hassan",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "turbo clean",
+    "prepare": "husky",
+"verify": "node scripts/verify.mjs",
+"check": "node scripts/check-project.mjs",
+"health": "node scripts/health-check.mjs"
+},
+  "devDependencies": {
+  "@commitlint/cli": "^20.1.0",
+  "@commitlint/config-conventional": "^20.0.0",
+  "@eslint/js": "^9.35.0",
+  "@types/node": "^24.3.0",
+  "eslint": "^9.35.0",
+  "globals": "^16.3.0",
+  "husky": "^9.1.7",
+  "prettier": "^3.6.2",
+  "turbo": "^2.5.6",
+  "typescript": "^5.9.2",
+  "typescript-eslint": "^8.42.0"
+ }
+}
+
