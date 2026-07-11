@@ -1,8 +1,13 @@
 export const branding = {
   name: "Infinity Tools",
-  tagline: "Build the Future with AI",
+  tagline: "The AI Platform for Builders",
   description:
-    "Create, launch, and scale AI-powered applications from one modern platform.",
+    "Design, build, deploy, and scale AI applications, games, automations, and websites from one intelligent workspace.",
   github: "https://github.com/hassansyed-999/Infinity-Tools",
-  primaryColor: "#2563eb",
+
+  stats: {
+    tools: "50+",
+    builders: "10K+",
+    uptime: "99.9%",
+  },
 };

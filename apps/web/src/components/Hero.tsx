@@ -35,29 +35,59 @@ export function Hero() {
         </div>
 
         {/* Right */}
-        <div className="rounded-2xl border bg-white p-8 shadow-xl">
-          <div className="mb-6 flex items-center justify-between">
-            <h3 className="text-lg font-semibold">Infinity Dashboard</h3>
-            <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
-              Online
+        <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-2xl">
+          <div className="mb-8 flex items-center justify-between">
+            <h3 className="text-xl font-bold">Infinity Workspace</h3>
+
+            <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
+              Live
             </span>
           </div>
 
-          <div className="space-y-4">
-            <div className="rounded-lg bg-blue-100 p-4">
-              🤖 AI Workspace
+          <div className="grid gap-4">
+            <div className="rounded-xl bg-blue-50 p-5">
+              <h4 className="font-semibold">🤖 AI Agents</h4>
+              <p className="mt-2 text-sm text-gray-600">
+                Create intelligent assistants in minutes.
+              </p>
             </div>
 
-            <div className="rounded-lg bg-purple-100 p-4">
-              🎮 Game Builder
+            <div className="rounded-xl bg-violet-50 p-5">
+              <h4 className="font-semibold">🎮 Game Studio</h4>
+              <p className="mt-2 text-sm text-gray-600">
+                Build Roblox and browser games with AI.
+              </p>
             </div>
 
-            <div className="rounded-lg bg-amber-100 p-4">
-              📊 Analytics
+            <div className="rounded-xl bg-amber-50 p-5">
+              <h4 className="font-semibold">📊 Analytics</h4>
+              <p className="mt-2 text-sm text-gray-600">
+                Monitor users, revenue, and performance.
+              </p>
             </div>
 
-            <div className="rounded-lg bg-emerald-100 p-4">
-              ⚡ Automation
+            <div className="rounded-xl bg-emerald-50 p-5">
+              <h4 className="font-semibold">⚡ Automation</h4>
+              <p className="mt-2 text-sm text-gray-600">
+                Connect apps and automate workflows.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid grid-cols-3 gap-4 border-t pt-6 text-center">
+            <div>
+              <p className="text-2xl font-bold">{branding.stats.tools}</p>
+              <p className="text-sm text-gray-500">AI Tools</p>
+            </div>
+
+            <div>
+              <p className="text-2xl font-bold">{branding.stats.builders}</p>
+              <p className="text-sm text-gray-500">Builders</p>
+            </div>
+
+            <div>
+              <p className="text-2xl font-bold">{branding.stats.uptime}</p>
+              <p className="text-sm text-gray-500">Uptime</p>
             </div>
           </div>
         </div>
