@@ -7,6 +7,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   href?: string;
   onClick?: () => void;
+  external?: boolean;
 }
 
 export function Button({
@@ -15,6 +16,7 @@ export function Button({
   type = "button",
   href,
   onClick,
+  external = false,
 }: ButtonProps) {
   const base =
     "inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-300";
@@ -22,7 +24,7 @@ export function Button({
   const primary = `bg-gradient-to-r ${brand.gradient} text-white hover:scale-105 ${brand.glow}`;
 
   const secondary =
-    "border border-gray-300 bg-white text-gray-700 hover:bg-gray-100";
+    "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100";
 
   const classes = `${base} ${
     variant === "primary" ? primary : secondary
@@ -33,6 +35,8 @@ export function Button({
       <a
         href={href}
         className={classes}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
       >
         {children}
       </a>

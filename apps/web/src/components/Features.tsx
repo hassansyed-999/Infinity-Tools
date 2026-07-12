@@ -1,45 +1,36 @@
+import {
+  Bot,
+  Boxes,
+  Rocket,
+} from "lucide-react";
+
 const features = [
   {
-    icon: "🤖",
-    title: "AI Development",
+    title: "AI-Powered Development",
     description:
-      "Generate applications, websites, APIs, and intelligent workflows with advanced AI assistance.",
-    color: "from-blue-500 to-cyan-500",
+      "Generate code, websites, applications, workflows, and AI solutions with intelligent assistance.",
+    icon: Bot,
+    iconColor: "text-blue-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-100",
   },
   {
-    icon: "🎮",
-    title: "Game Studio",
+    title: "Reusable Components",
     description:
-      "Create Roblox experiences, browser games, and interactive worlds using AI and visual tools.",
-    color: "from-violet-500 to-fuchsia-500",
+      "Accelerate development with a unified design system and reusable components across every project.",
+    icon: Boxes,
+    iconColor: "text-violet-600",
+    bgColor: "bg-violet-50",
+    borderColor: "border-violet-100",
   },
   {
-    icon: "⚡",
-    title: "Automation",
+    title: "Scalable Architecture",
     description:
-      "Build automations that connect your apps, services, and workflows without repetitive tasks.",
-    color: "from-amber-500 to-orange-500",
-  },
-  {
-    icon: "📊",
-    title: "Analytics",
-    description:
-      "Monitor projects, users, revenue, and performance through a unified dashboard.",
-    color: "from-emerald-500 to-green-500",
-  },
-  {
-    icon: "🧩",
-    title: "Component Library",
-    description:
-      "Reuse professionally designed UI components to build products faster and more consistently.",
-    color: "from-pink-500 to-rose-500",
-  },
-  {
-    icon: "☁️",
-    title: "Cloud Deployment",
-    description:
-      "Deploy your applications with a streamlined workflow and scalable cloud infrastructure.",
-    color: "from-sky-500 to-blue-600",
+      "Built on Next.js and Turborepo for exceptional performance, scalability, and long-term maintainability.",
+    icon: Rocket,
+    iconColor: "text-emerald-600",
+    bgColor: "bg-emerald-50",
+    borderColor: "border-emerald-100",
   },
 ];
 
@@ -47,45 +38,57 @@ export function Features() {
   return (
     <section
       id="features"
-      className="bg-white py-24"
+      className="bg-slate-50 py-24"
     >
       <div className="mx-auto max-w-7xl px-6">
+        {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">
-            Platform Features
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue-600">
+            Why Infinity Tools
           </p>
 
-          <h2 className="text-4xl font-black tracking-tight text-gray-900 md:text-5xl">
+          <h2 className="mt-4 text-4xl font-black text-slate-900 md:text-5xl">
             Everything You Need to Build Faster
           </h2>
 
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Infinity Tools combines AI, development, automation, analytics,
-            and game creation into one modern platform.
+          <p className="mt-6 text-lg leading-8 text-slate-600">
+            From AI-powered builders to scalable infrastructure,
+            Infinity Tools gives creators one unified platform for
+            websites, games, automation, AI agents, and productivity.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-            >
+        {/* Feature Cards */}
+        <div className="grid gap-8 md:grid-cols-3">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
               <div
-                className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r ${feature.color} text-3xl shadow-lg`}
+                key={feature.title}
+                className={`group rounded-3xl border ${feature.borderColor} bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}
               >
-                {feature.icon}
+                <div
+                  className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl ${feature.bgColor}`}
+                >
+                  <Icon
+                    size={30}
+                    className={feature.iconColor}
+                  />
+                </div>
+
+                <h3 className="text-2xl font-bold text-slate-900">
+                  {feature.title}
+                </h3>
+
+                <p className="mt-4 leading-7 text-slate-600">
+                  {feature.description}
+                </p>
+
+                <div className="mt-8 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 transition-all duration-300 group-hover:w-20" />
               </div>
-
-              <h3 className="mb-4 text-2xl font-bold text-gray-900">
-                {feature.title}
-              </h3>
-
-              <p className="leading-7 text-gray-600">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
