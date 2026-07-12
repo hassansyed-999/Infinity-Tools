@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 
 import { branding } from "../lib/branding";
+import { Badge } from "./ui/Badge";
 import { Button } from "./Button";
 
 export function Hero() {
@@ -34,13 +35,15 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button>Get Started</Button>
+            <Button>
+              Get Started
+            </Button>
 
             <Button
               variant="secondary"
-             href={branding.github}
-             external
-             >   
+              href={branding.github}
+              external
+            >
               GitHub
             </Button>
           </div>
@@ -59,9 +62,9 @@ export function Hero() {
               </p>
             </div>
 
-            <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
+            <Badge variant="success">
               ● Online
-            </span>
+            </Badge>
           </div>
 
           <div className="space-y-4">
@@ -78,9 +81,9 @@ export function Hero() {
                   </h4>
                 </div>
 
-                <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
+                <Badge variant="success">
                   Running
-                </span>
+                </Badge>
               </div>
 
               <p className="mt-2 text-sm text-slate-600">
@@ -101,9 +104,9 @@ export function Hero() {
                   </h4>
                 </div>
 
-                <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">
+                <Badge variant="info">
                   Building
-                </span>
+                </Badge>
               </div>
 
               <p className="mt-2 text-sm text-slate-600">
@@ -124,9 +127,9 @@ export function Hero() {
                   </h4>
                 </div>
 
-                <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-700">
+                <Badge variant="warning">
                   Pending
-                </span>
+                </Badge>
               </div>
 
               <p className="mt-2 text-sm text-slate-600">

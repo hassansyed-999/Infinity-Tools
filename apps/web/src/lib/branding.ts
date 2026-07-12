@@ -52,7 +52,7 @@ export const branding = {
    * --------------------------------------*/
 
   social: {
-    github: "https://github.com/HassanSyed",
+    github: "https://github.com/hassansyed-999/Infinity-Tools",
     discord: "#",
     x: "#",
     youtube: "#",

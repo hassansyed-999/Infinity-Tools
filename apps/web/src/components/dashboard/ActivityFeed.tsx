@@ -1,19 +1,15 @@
 import { activityFeed } from "../../lib/dashboard";
+import { Card, SectionHeader } from "../ui";
 
 export function ActivityFeed() {
   return (
     <section>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-slate-900">
-          Recent Activity
-        </h2>
+      <SectionHeader
+        title="Recent Activity"
+        description="Keep track of your latest actions across the platform."
+      />
 
-        <p className="mt-1 text-slate-600">
-          Keep track of your latest actions across the platform.
-        </p>
-      </div>
-
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <Card>
         {activityFeed.map((activity, index) => {
           const Icon = activity.icon;
 
@@ -27,7 +23,10 @@ export function ActivityFeed() {
               }`}
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100">
-                <Icon size={20} className="text-blue-600" />
+                <Icon
+                  size={20}
+                  className="text-blue-600"
+                />
               </div>
 
               <div className="flex-1">
@@ -42,7 +41,7 @@ export function ActivityFeed() {
             </div>
           );
         })}
-      </div>
+      </Card>
     </section>
   );
 }
