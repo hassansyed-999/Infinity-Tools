@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { dashboardNavigation } from "../../lib/navigation";
+import { dashboardNavigation } from "../../config/navigation";
 import { Logo } from "../Logo";
 
 export function DashboardSidebar() {

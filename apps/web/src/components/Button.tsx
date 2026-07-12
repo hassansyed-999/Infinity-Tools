@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { brand } from "../lib/brand";
+import { theme } from "../config/theme";
 
 interface ButtonProps {
   children: ReactNode;
@@ -18,10 +18,9 @@ export function Button({
   onClick,
   external = false,
 }: ButtonProps) {
-  const base =
-    "inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-300";
+  const base = `inline-flex items-center justify-center px-6 py-3 font-semibold ${theme.radius.button} ${theme.animation.button}`;
 
-  const primary = `bg-gradient-to-r ${brand.gradient} text-white hover:scale-105 ${brand.glow}`;
+  const primary = `bg-gradient-to-r ${theme.gradients.primary} text-white ${theme.shadows.lg}`;
 
   const secondary =
     "border border-slate-300 bg-white text-slate-700 hover:bg-slate-100";

@@ -5,7 +5,7 @@ import {
   Users,
 } from "lucide-react";
 
-import { branding } from "../lib/branding";
+import { branding } from "../config/branding";
 
 const stats = [
   {

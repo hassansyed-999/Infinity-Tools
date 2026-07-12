@@ -4,7 +4,7 @@ import {
   Shield,
 } from "lucide-react";
 
-import { branding } from "../lib/branding";
+import { branding } from "../config/branding";
 import { Logo } from "./Logo";
 
 export function Footer() {

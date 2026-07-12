@@ -1,4 +1,4 @@
-import { marketingNavigation } from "../lib/navigation";
+import { marketingNavigation } from "../config/navigation";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 

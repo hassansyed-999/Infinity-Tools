@@ -1,4 +1,4 @@
-import { aiEngines } from "../../lib/dashboard";
+import { aiEngines } from "../../config/dashboard";
 
 export function AIEngines() {
   return (

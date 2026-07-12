@@ -4,7 +4,7 @@ import {
   Workflow,
 } from "lucide-react";
 
-import { branding } from "../lib/branding";
+import { branding } from "../config/branding";
 import { Badge } from "./ui/Badge";
 import { Button } from "./Button";
 

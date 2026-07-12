@@ -1,4 +1,4 @@
-import { overviewCards } from "../../lib/dashboard";
+import { overviewCards } from "../../config/dashboard";
 
 export function OverviewCards() {
   return (

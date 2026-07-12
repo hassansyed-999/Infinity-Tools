@@ -1,4 +1,4 @@
-import { toolCategories } from "../../lib/dashboard";
+import { toolCategories } from "../../config/dashboard";
 
 export function ToolCategories() {
   return (

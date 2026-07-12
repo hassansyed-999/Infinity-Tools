@@ -1,4 +1,4 @@
-import { quickActions } from "../../lib/dashboard";
+import { quickActions } from "../../config/dashboard";
 
 export function QuickActions() {
   return (

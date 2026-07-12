@@ -1,6 +1,6 @@
 import { FolderKanban } from "lucide-react";
 
-import { recentProjects } from "../../lib/dashboard";
+import { recentProjects } from "../../config/dashboard";
 
 export function RecentProjects() {
   return (

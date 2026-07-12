@@ -1,4 +1,4 @@
-import { activityFeed } from "../../lib/dashboard";
+import { activityFeed } from "../../config/dashboard";
 import { Card, SectionHeader } from "../ui";
 
 export function ActivityFeed() {
