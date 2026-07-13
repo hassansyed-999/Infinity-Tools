@@ -1,36 +1,113 @@
-import { ActivityFeed } from "../../../components/dashboard/ActivityFeed";
-import { AIEngines } from "../../../components/dashboard/AIEngines";
-import { OverviewCards } from "../../../components/dashboard/OverviewCards";
-import { QuickActions } from "../../../components/dashboard/QuickActions";
-import { RecentProjects } from "../../../components/dashboard/RecentProjects";
-import { ToolCategories } from "../../../components/dashboard/ToolCategories";
+import {
+  Bot,
+  FolderOpen,
+  Sparkles,
+  Wand2,
+} from "lucide-react";
+
+import {
+  DashboardContainer,
+} from "../../../components/dashboard/DashboardContainer";
+import {
+  DashboardQuickAction,
+} from "../../../components/dashboard/DashboardQuickAction";
+import {
+  DashboardRecentActivity,
+} from "../../../components/dashboard/DashboardRecentActivity";
+import {
+  DashboardSection,
+} from "../../../components/dashboard/DashboardSection";
+import {
+  DashboardStatsCard,
+} from "../../../components/dashboard/DashboardStatsCard";
+import { Grid } from "../../../components/ui";
+
+const activities = [
+  {
+    id: "1",
+    title: "Created your Infinity Tools workspace",
+    time: "Just now",
+  },
+  {
+    id: "2",
+    title: "Dashboard initialized",
+    time: "Today",
+  },
+];
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-10">
-      <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h1 className="text-4xl font-black text-slate-900">
-          Welcome to Infinity Tools
-        </h1>
+    <DashboardContainer>
+      <DashboardSection
+        title="Welcome to Infinity Tools"
+        description="Manage your AI tools, projects, automation, games, websites, documents, and more from one dashboard."
+      >
+        <Grid cols={4}>
+          <DashboardStatsCard
+            title="AI Tools"
+            value="1500+"
+            description="Available tools"
+          />
 
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-          This is your personal workspace. From here you'll be able to access
-          AI tools, create projects, build websites, generate games, manage AI
-          agents, automate workflows, and much more.
-        </p>
+          <DashboardStatsCard
+            title="Projects"
+            value="0"
+            description="Your active projects"
+          />
 
-        <OverviewCards />
-      </section>
+          <DashboardStatsCard
+            title="Workflows"
+            value="0"
+            description="Automation flows"
+          />
 
-      <QuickActions />
+          <DashboardStatsCard
+            title="Credits"
+            value="0"
+            description="Available credits"
+          />
+        </Grid>
+      </DashboardSection>
 
-      <AIEngines />
+      <DashboardSection
+        title="Quick Actions"
+        description="Start building with Infinity Tools."
+      >
+        <Grid cols={2}>
+          <DashboardQuickAction
+            title="Create AI Tool"
+            description="Start building a new AI-powered tool."
+            icon={<Bot size={24} />}
+          />
 
-      <RecentProjects />
+          <DashboardQuickAction
+            title="Create Website"
+            description="Generate a modern website."
+            icon={<Sparkles size={24} />}
+          />
 
-      <ToolCategories />
+          <DashboardQuickAction
+            title="Create Game"
+            description="Build your next game project."
+            icon={<Wand2 size={24} />}
+          />
 
-      <ActivityFeed />
-    </div>
+          <DashboardQuickAction
+            title="View Projects"
+            description="Manage all of your projects."
+            icon={<FolderOpen size={24} />}
+          />
+        </Grid>
+      </DashboardSection>
+
+      <DashboardSection
+        title="Recent Activity"
+        description="Latest actions in your workspace."
+      >
+        <DashboardRecentActivity
+          activities={activities}
+        />
+      </DashboardSection>
+    </DashboardContainer>
   );
 }
