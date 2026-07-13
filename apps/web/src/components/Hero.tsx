@@ -7,6 +7,7 @@ import {
 import { branding } from "../config/branding";
 import { Badge } from "./ui/Badge";
 import { Button } from "./Button";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
@@ -35,17 +36,17 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button>
-              Get Started
+           <Button>
+            Get Started
             </Button>
 
             <Button
-              variant="secondary"
-              href={branding.github}
-              external
-            >
-              GitHub
-            </Button>
+  variant="secondary"
+  href={branding.github}
+  external
+>
+  GitHub
+</Button>
           </div>
         </div>
 
