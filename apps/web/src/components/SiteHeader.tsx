@@ -1,5 +1,5 @@
 import { marketingNavigation } from "../config/navigation";
-import { Button } from "./Button";
+import { Button } from "./ui/Button";
 import { Logo } from "./Logo";
 
 export function SiteHeader() {

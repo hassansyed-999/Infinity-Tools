@@ -1,40 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@infinity/ui";
+import { ReactNode } from "react";
+
+import { ToastProvider } from "../components/ui/toast";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: {
-    default: "Infinity Tools",
-    template: "%s | Infinity Tools",
-  },
+  title: "Infinity Tools",
   description:
-    "One Platform. Infinite Tools. AI-powered tools for creators, developers, students, and businesses.",
+    "The all-in-one platform for AI tools, automation, websites, games, and more.",
 };
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: RootLayoutProps) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-  <ThemeProvider>{children}</ThemeProvider>
-</body>
+    <html lang="en">
+      <body>
+        <ToastProvider>
+          {children}
+        </ToastProvider>
+      </body>
     </html>
   );
 }

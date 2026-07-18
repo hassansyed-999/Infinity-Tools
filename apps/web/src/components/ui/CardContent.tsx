@@ -10,7 +10,15 @@ export function CardContent({
   className = "",
 }: CardContentProps) {
   return (
-    <div className={`px-6 pb-6 ${className}`}>
+    <div
+      className={`
+        px-6
+        pb-6
+        text-slate-600
+        leading-7
+        ${className}
+      `}
+    >
       {children}
     </div>
   );

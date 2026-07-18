@@ -6,7 +6,7 @@ import {
 
 import { branding } from "../config/branding";
 import { Badge } from "./ui/Badge";
-import { Button } from "./Button";
+import { Button } from "./ui/Button";
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
