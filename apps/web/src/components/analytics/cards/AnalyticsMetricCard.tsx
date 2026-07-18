@@ -1,4 +1,4 @@
-import { LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface AnalyticsMetricCardProps {
   title: string;
@@ -9,6 +9,25 @@ interface AnalyticsMetricCardProps {
   icon: LucideIcon;
 }
 
+const iconStyles = {
+  "Total Usage": {
+    wrapper: "bg-blue-50",
+    icon: "text-blue-600",
+  },
+  "Active Users": {
+    wrapper: "bg-violet-50",
+    icon: "text-violet-600",
+  },
+  "Projects Created": {
+    wrapper: "bg-emerald-50",
+    icon: "text-emerald-600",
+  },
+  "Credits Used": {
+    wrapper: "bg-amber-50",
+    icon: "text-amber-600",
+  },
+} as const;
+
 export function AnalyticsMetricCard({
   title,
   value,
@@ -17,8 +36,13 @@ export function AnalyticsMetricCard({
   changeType,
   icon: Icon,
 }: AnalyticsMetricCardProps) {
+  const style = iconStyles[title as keyof typeof iconStyles] ?? {
+    wrapper: "bg-slate-100",
+    icon: "text-slate-600",
+  };
+
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm font-medium text-slate-500">
@@ -34,8 +58,13 @@ export function AnalyticsMetricCard({
           </p>
         </div>
 
-        <div className="rounded-2xl bg-slate-100 p-3">
-          <Icon size={24} />
+        <div className={`rounded-2xl p-3 ${style.wrapper}`}>
+          <Icon
+            size={24}
+            strokeWidth={2}
+            className={style.icon}
+            aria-hidden="true"
+          />
         </div>
       </div>
 
