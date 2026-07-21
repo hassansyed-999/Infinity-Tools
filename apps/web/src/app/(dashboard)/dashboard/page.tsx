@@ -5,7 +5,8 @@ import {
   Wand2,
 } from "lucide-react";
 
-import { DashboardSkeleton } from "../../../components/dashboard/DashboardSkeleton";
+import { requireUser } from "@/lib/auth/require-user";
+
 import { DashboardContainer } from "../../../components/dashboard/DashboardContainer";
 import { DashboardQuickAction } from "../../../components/dashboard/DashboardQuickAction";
 import { DashboardRecentActivity } from "../../../components/dashboard/DashboardRecentActivity";
@@ -27,7 +28,9 @@ const activities = [
   },
 ];
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  await requireUser();
+
   return (
     <DashboardContainer>
       <DashboardHero />
@@ -107,9 +110,7 @@ export default function DashboardPage() {
         title="Recent Activity"
         description="Latest updates across your workspace."
       >
-        <DashboardRecentActivity
-          activities={activities}
-        />
+        <DashboardRecentActivity activities={activities} />
       </DashboardSection>
     </DashboardContainer>
   );
