@@ -38,10 +38,14 @@ model User {
 
   projects Project[]
   tools    Tool[]
-  usage    UsageEvent[]
+  usage UsageEvent[]
 
-  accounts Account[]
-  sessions Session[]
+
+bookmarks ToolBookmark[]
+reviews ToolReview[]
+
+accounts Account[]
+sessions Session[]
 }
 
 model Project {
@@ -68,16 +72,42 @@ model Tool {
   id          String @id @default(cuid())
   name        String
   slug        String @unique
-  description String?
-  category    String?
+  description      String?
+shortDescription String?
 
-  icon     String?
-  website  String?
-  pricing  String?
+category String?
 
-  featured Boolean @default(false)
-  verified Boolean @default(false)
-  isActive Boolean @default(true)
+developer String?
+license   String?
+platform  String?
+
+icon    String?
+image   String?
+banner  String?
+
+website String?
+pricing String?
+
+tags String[]
+
+downloads    Int @default(0)
+views         Int @default(0)
+
+bookmarkCount Int @default(0)
+reviewCount   Int @default(0)
+
+rating Float @default(0)
+
+featured Boolean @default(false)
+verified Boolean @default(false)
+
+featuredAt DateTime?
+verifiedAt DateTime?
+
+apiAvailable Boolean @default(false)
+openSource   Boolean @default(false)
+
+isActive Boolean @default(true)
 
   ownerId String?
   owner   User? @relation(fields: [ownerId], references: [id], onDelete: SetNull)
@@ -87,11 +117,51 @@ model Tool {
 
   usage UsageEvent[]
 
+bookmarks ToolBookmark[]
+reviews ToolReview[]
+
   @@index([category])
   @@index([featured])
   @@index([verified])
   @@index([isActive])
   @@index([ownerId])
+}
+model ToolBookmark {
+  id String @id @default(cuid())
+
+  userId String
+  toolId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool Tool @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, toolId])
+
+  @@index([userId])
+  @@index([toolId])
+}
+
+model ToolReview {
+  id String @id @default(cuid())
+
+  rating Int
+  comment String?
+
+  userId String
+  toolId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool Tool @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, toolId])
+
+  @@index([toolId])
+  @@index([userId])
 }
 
 model UsageEvent {

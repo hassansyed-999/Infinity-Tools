@@ -1,69 +1,71 @@
-"use client";
+import Link from "next/link";
+import { Plus } from "lucide-react";
 
-import { useMemo, useState } from "react";
+import { AIToolsClient } from "@/components/ai-tools";
+import { requireUser } from "@/lib/auth/require-user";
+import { db } from "@/lib/db";
 
-import { CreateAIToolForm } from "@/components/ai-tools/CreateAIToolForm";
-import { AIToolGrid } from "@/components/ai-tools/AIToolGrid";
-import { AIToolSearch } from "@/components/ai-tools/AIToolSearch";
+export default async function AIToolsPage() {
+  const user = await requireUser();
 
-const sampleTools = [
-  {
-    id: "chatgpt",
-    name: "ChatGPT",
-    description:
-      "Conversational AI assistant for writing, coding, and problem solving.",
-    category: "AI Chat",
-  },
-  {
-    id: "midjourney",
-    name: "Midjourney",
-    description:
-      "Generate high-quality AI artwork from text prompts.",
-    category: "Image Generation",
-  },
-  {
-    id: "cursor",
-    name: "Cursor",
-    description:
-      "AI-powered coding editor for developers.",
-    category: "Developer",
-  },
-];
-
-export default function AIToolsPage() {
-  const [search, setSearch] = useState("");
-
-  const filteredTools = useMemo(() => {
-    const query = search.toLowerCase();
-
-    return sampleTools.filter(
-      (tool) =>
-        tool.name.toLowerCase().includes(query) ||
-        tool.description.toLowerCase().includes(query) ||
-        tool.category.toLowerCase().includes(query),
-    );
-  }, [search]);
+  const tools = await db.tool.findMany({
+    where: {
+      OR: [
+        {
+          ownerId: user.id,
+        },
+        {
+          ownerId: null,
+        },
+      ],
+    },
+    orderBy: [
+      {
+        featured: "desc",
+      },
+      {
+        verified: "desc",
+      },
+      {
+        createdAt: "desc",
+      },
+    ],
+  });
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-black text-slate-950">
-          AI Tools
-        </h1>
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 className="text-4xl font-black text-slate-950">
+            AI Tools
+          </h1>
 
-        <p className="mt-2 text-slate-600">
-          Browse, search, and create AI tools for your workspace.
-        </p>
+          <p className="mt-2 text-slate-600">
+            Discover, manage, and publish AI tools in your Infinity Tools workspace.
+          </p>
+        </div>
+
+        <Link
+          href="/dashboard/ai-tools/new"
+          className="inline-flex items-center gap-2 rounded-2xl bg-violet-600 px-5 py-3 font-bold text-white transition hover:bg-violet-700"
+        >
+          <Plus size={20} />
+          Create AI Tool
+        </Link>
       </div>
 
-      <AIToolSearch
-        value={search}
-        onChange={setSearch}
+      <AIToolsClient
+        tools={tools.map((tool) => ({
+          id: tool.id,
+          name: tool.name,
+          description: tool.description,
+          category: tool.category,
+          pricing: tool.pricing,
+          website: tool.website,
+          verified: tool.verified,
+          featured: tool.featured,
+        }))}
       />
-
-      <AIToolGrid tools={filteredTools} />
-
-      <CreateAIToolForm />
     </div>
   );
 }
