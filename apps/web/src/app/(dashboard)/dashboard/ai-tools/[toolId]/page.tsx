@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { BookmarkButton } from "@/components/bookmarks/BookmarkButton";
 import { requireUser } from "@/lib/auth/require-user";
 import { db } from "@/lib/db";
 
@@ -92,7 +93,7 @@ export default async function ToolPage({
             </div>
 
             <p className="mt-4 max-w-3xl text-slate-600">
-              {tool.description ||
+              {tool.description ??
                 "No description available for this AI tool."}
             </p>
 
@@ -112,13 +113,17 @@ export default async function ToolPage({
           </div>
         </div>
 
-        <Link
-          href={`/dashboard/ai-tools/${tool.id}/edit`}
-          className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-900 transition hover:bg-slate-50"
-        >
-          <Pencil size={18} />
-          Edit Tool
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <BookmarkButton toolId={tool.id} />
+
+          <Link
+            href={`/dashboard/ai-tools/${tool.id}/edit`}
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-900 transition hover:bg-slate-50"
+          >
+            <Pencil size={18} />
+            Edit Tool
+          </Link>
+        </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
